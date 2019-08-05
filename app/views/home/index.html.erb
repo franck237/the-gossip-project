@@ -1,0 +1,17 @@
+<br/>
+<br/>
+<div class="jumbotron jumbotron-fluid" style="background-color:#FEF4F7">
+  <div class="container">
+    <h1 class="display-5" style="color:#7146B2">Bienvenue sur la page Homepage de The Gossip Project</h1>
+    <p class="text-center">Tu trouveras ci dessous la liste des derniers potins en vogue </p>
+  </div>
+</div>
+
+    
+    	<% @gossip_list.each.with_index(1) do |gossip, index| %>
+        <p style="color:#FFFFFF">	
+          <%= index %> -
+          <%= gossip.user.first_name %><br/>
+           "<%= gossip.title %>"<br/>
+        </p>
+      <% end %>
