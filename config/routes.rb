@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'gossip:num_gossip', to: 'gossip#show', as: 'gossip_path'
   root 'home#index'
   get '/home', to: 'home#index'
   get '/contact', to: 'contact#index'
