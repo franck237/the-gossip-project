@@ -8,7 +8,7 @@
   <p class="text-center">Contenu : <%= @gossip_selected.content %>
   <p class="text-center">(Crée le <%= @gossip_selected.created_at %>)
   <p class="lead">
-    <a class="btn btn-link btn-lg" href="#" role="button" style="color:#7146B2">Voir la fiche complète de l'auteur</a>
+    <a class="btn btn-link btn-lg" href="/user<%= @gossip_selected.user_id %>" role="button" style="color:#7146B2">Voir la fiche complète de l'auteur</a>
   </p>
   <% else %>
   <h1 class="display-5" style="color:#7146B2">⛔ Désolé, le potin numéro <%= @gossip_number %> n'existe pas ! ⛔</h1>

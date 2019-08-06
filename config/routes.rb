@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/user:num_author', to: 'user#author'
   get 'gossip:num_gossip', to: 'gossip#show', as: 'gossip_path'
   root 'home#index'
   get '/home', to: 'home#index'

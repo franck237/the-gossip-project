@@ -1,0 +1,17 @@
+<div class="jumbotron" style="background-color:#FEF4F7">
+  <h1 class="display-5" style="color:#7146B2">🔥 Bienvenue sur la page de l'auteur numéro <%= @author_id %> 🔥</h1>
+  <p class="text-center" style="color:#7146B2">- Voici ci-dessous la description de cet auteur -</p>
+  <hr class="my-4">
+  <p class="text-center">Prénom : <%= @user_selected.first_name %></p>
+  <p class="text-center">Nom : <%= @user_selected.last_name %></p>
+  <p class="text-center">Description : <%= @user_selected.description %>
+  <p class="text-center">Age : <%= @user_selected.age %>
+  <p class="text-center">Email : <button type="button" class="btn btn-link"> <%= @user_selected.email %></button></p>
+  <p class="text-center">Liste des titres des Gossips de l'auteur : <%= @user_selected.gossips.each.with_index(1) do |gossip, index| %>
+        <p>	
+          <%= gossip.id %> - 
+          <%= gossip.title %><br/>
+        </p>
+      <% end %>
+  <p class="lead">
+</div>
