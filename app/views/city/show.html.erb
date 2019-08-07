@@ -1,0 +1,25 @@
+<div class="jumbotron" style="background-color:#FEF4F7">
+  <h1 class="display-5" style="color:#7146B2">🔥 Bienvenue sur la page des potins de la ville <%= @city.id %> 🔥</h1>
+  <p class="text-center" style="color:#7146B2">- Voici ci-dessous la ville en détail -</p>
+  <hr class="my-4">
+  <p class="text-center">Nom de la Ville : <%= @city.name %></p>
+  <p class="lead">
+  <p class="text-center">Liste des Gossips de la ville : <%= @city.users.each do |user| %>
+      <%= user.gossips.each do |gossip| %>
+        </p> 
+  <div class="list-group">
+  <a href="<%= gossip_path(gossip.id) %>" class="list-group-item list-group-item-action" style="color:#7146B2">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><%= gossip.id %> - <%= gossip.title %></h5>
+      <small><%= gossip.created_at %></small>
+    </div>
+    <p class="mb-1"><%= gossip.content %></p>
+  </a>
+  </div>
+  <br/>
+  <% end %>
+    <% end %>
+  <p class="lead">
+</div>
+
+

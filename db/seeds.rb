@@ -8,14 +8,18 @@
 require 'faker'
 
 #Supprime les précédentes lignes de la BDD mais l'incrémentation des index continue !
-City.destroy_all
-User.destroy_all
-Gossip.destroy_all
-Tag.destroy_all
-JoinGotag.destroy_all
 PrivateMessage.destroy_all
-Comment.destroy_all
 Like.destroy_all
+Comment.destroy_all
+Tag.destroy_all
+Gossip.destroy_all
+User.destroy_all
+City.destroy_all
+
+JoinGotag.destroy_all
+
+
+
 
 #Création de 10 villes aléatoires
 	random_city_list = []
@@ -34,7 +38,7 @@ end
 #Création de 20 utilisateurs aléatoires portant chacun un user aléatoire précedemment crée en argument foreign key
 	random_gossip_list = []
 20.times do
-	random_gossip = Gossip.create(title: Faker::Book.title, content: Faker::Lorem.sentence(word_count: 9, supplemental: false, random_words_to_add: 10), user: random_user_list.sample)
+	random_gossip = Gossip.create(title: Faker::Lorem.sentence(word_count: 1, supplemental: false, random_words_to_add: 1), content: Faker::Lorem.sentence(word_count: 9, supplemental: false, random_words_to_add: 10), user: random_user_list.sample)
 	random_gossip_list << random_gossip
 end
 
@@ -98,22 +102,26 @@ end
 
 #Création de 2 autres commentaires différents pour un gossip aléatoire avec des auteurs (users) aléatoires
 	v = i + 6
+random_comment_list = []
 2.times do
 	random_comment = Comment.create(content: Faker::Lorem.sentence(word_count: 4, supplemental: false, random_words_to_add: 4), gossip: random_gossip_list[v], user: random_user_list.sample)
+random_comment_list << random_comment
 end
 
 #Création de 20 likes en les mettant a des Gossip ou des Commentaires au hasard
 20.times do
+	gossip_liked_list = []
+	comment_liked_list = []
 	i = rand(1..2)
 	j = rand(1..20)
 	random_like = Like.create(user: random_user_list.sample)
-	gossip_liked = Gossip.find(j)
-	comment_liked = Comment.find(j)
+	gossip_liked = random_gossip_list[j]
+	comment_liked = random_comment_list[j]
 	case i
 		when 1
-			gossip_liked.likes << random_like
+			gossip_liked_list << random_like
 		when 2
-			comment_liked.likes << random_like
+			comment_liked_list << random_like
 	end
 end
 

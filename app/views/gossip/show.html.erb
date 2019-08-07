@@ -1,18 +1,13 @@
 <div class="jumbotron" style="background-color:#FEF4F7">
-	<% if @gossip_number <= @gossip_array.length %>
-  <h1 class="display-5" style="color:#7146B2">🔥 Bienvenue sur la page du potin numéro <%= @gossip_number %> 🔥</h1>
+  <h1 class="display-5" style="color:#7146B2">🔥 Bienvenue sur la page du potin numéro <%= @gossip.id %> 🔥</h1>
   <p class="text-center" style="color:#7146B2">- Voici ci-dessous le potin en détail -</p>
   <hr class="my-4">
-  <p class="text-center">Titre : <%= @gossip_selected.title %></p>
-  <p class="text-center">Autheur : <%= @gossip_selected.user.last_name %> <%= @gossip_selected.user.first_name %></p>
-  <p class="text-center">Contenu : <%= @gossip_selected.content %>
-  <p class="text-center">(Crée le <%= @gossip_selected.created_at %>)
+  <p class="text-center">Titre : <%= @gossip.title %></p>
+  <p class="text-center">Contenu : <%= @gossip.content %>
+  <p class="text-center">Auteur : <%= @gossip.user.last_name %> <%= @gossip.user.first_name %></p>
+  <p class="text-center">Ville : <%= @gossip.user.city.name %>
+  <p class="text-center">(Crée le <%= @gossip.created_at %>)
   <p class="lead">
-    <a class="btn btn-link btn-lg" href="/user<%= @gossip_selected.user_id %>" role="button" style="color:#7146B2">Voir la fiche complète de l'auteur</a>
+    <a class="btn btn-link btn-lg" href="<%= user_path(@gossip.user_id) %>" role="button" style="color:#7146B2">Voir la fiche complète de l'auteur</a>
   </p>
-  <% else %>
-  <h1 class="display-5" style="color:#7146B2">⛔ Désolé, le potin numéro <%= @gossip_number %> n'existe pas ! ⛔</h1>
-  <p class="text-center">Veuillez choisir un numéro entre 1 et <%= @gossip_array.length %>	
-  </p>
-  <% end %>
 </div>

@@ -7,15 +7,22 @@
   </div>
 </div>
 
-    
-<% @gossip_list.each.with_index(1) do |gossip, index| %>
+  <!-- Ajout de la fonctionnalité qui permet d'ajouter une alerte au user-->
+  <% if flash[:alert] != nil %>
+    <div class='alert alert-success mt-4'>
+      <%= flash[:alert] %>
+    </div>
+    <% end %>
+
+
+<% @gossip_list.each.with_index(1) do |gossip| %>
  	<div class="card-deck" style="margin-left: 15px; margin-right: 15px">
  	<div class="card" style="width: 18rem;">
   	<div class="card-body">
-    	<h5 class="card-title"><%= index %> - "<%= gossip.title %>"</h5>
+    	<h5 class="card-title"><%= gossip.id %> - "<%= gossip.title %>"</h5>
     	<h6 class="card-subtitle mb-2 text-muted"><%= gossip.user.first_name %></h6>
     	<p class="card-text"><%= gossip.content %></p>
-   	 <a href="/gossip<%= index%>" class="card-link"> Cliquez pour plus d'infos: </a>
+   	 <a href="<%= gossip_path(gossip.id) %>" class="card-link"> Cliquez pour plus d'infos: </a>
  		</div>
  		</div>
 	</div>
