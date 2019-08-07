@@ -2,13 +2,17 @@
   <h1 class="display-5" style="color:#7146B2">🔥 Bienvenue sur la page de l'auteur numéro <%= @user.id %> 🔥</h1>
   <p class="text-center" style="color:#7146B2">- Voici ci-dessous la description de cet auteur -</p>
   <hr class="my-4">
-  <p class="text-center">Prénom : <%= @user.first_name %></p>
-  <p class="text-center">Nom : <%= @user.last_name %></p>
-  <p class="text-center">Description : <%= @user.description %>
-  <p class="text-center">Email : <button type="button" class="btn btn-link"> <%= @user.email %></button></p>
-  <p class="text-center">Age : <%= @user.age %></p>
-  <p class="text-center">
-  Ville : <a class="btn btn-link btn-lg" href="<%= city_path(@user.city_id) %>" role="button"> <%= @user.city.name %> </a></p>
+  <div class="card bg-light mb-3 border border-primary">
+  <h5 class="card-header text-center">Description de l'auteur <%= @user.id %></h5>
+  <div class="card-body" style="color:#7146B2">
+    <p class="card-title">Prénom : <%= @user.first_name %></p>
+    <p class="card-title">Nom : <%= @user.last_name %></p>
+    <p class="card-text">Description : <%= @user.description %></p>
+    <p class="card-text">Email : <button type="button" class="btn btn-link btn-lg"> <%= @user.email %></button></p>
+    <p class="card-text">Age : <%= @user.age %></p>
+    <p class="card-text">Ville : <a class="btn btn-link btn-lg" href="<%= city_path(@user.city_id) %>" role="button"> <%= @user.city.name %> </a></p>
+  </div>
+</div>
   <br/>
   <p class="text-center">Liste des Gossips de l'auteur : </p>
 
